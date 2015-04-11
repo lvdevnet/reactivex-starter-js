@@ -7,7 +7,7 @@ if (!clientId) {
   process.exit(0);
 }
 
-var participant = 'change-me';
+var participant = 'dimochka';
 var interval = 5; // seconds
 var postEndpoint = 'http://rxdisplay.neueda.lv/in';
 var instagramTag = 'cat';
@@ -61,6 +61,10 @@ pics.subscribe(function(pic) {
     .subscribe(function(res) {
       console.log(postEndpoint + ' <- ' + pic.url);
     }, function(err) {
-      console.log(err.response.text.trim());
+      if (err.response) {
+        console.log(err.response.text.trim());
+      } else {
+        console.log(err.code);
+      }
     });
 });

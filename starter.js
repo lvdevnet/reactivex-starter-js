@@ -9,7 +9,7 @@ if (!clientId) {
 
 var participant = 'change-me';
 var interval = 5; // seconds
-var postEndpoint = 'http://localhost:3000/in';
+var postEndpoint = 'http://rxdisplay.neueda.lv/in';
 var instagramTag = 'cat';
 
 

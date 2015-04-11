@@ -45,7 +45,9 @@ var rawPics = Rx.Observable.interval(interval * 1000).flatMap(function() {
 
 
 // Step 3: Restructure data and send to UI
-var pics = rawPics.map(function(pic) {
+var pics = rawPics.distinct(function (pic) {
+  return pic.images.thumbnail.url;
+}).map(function(pic) {
   return {
     tag: instagramTag,
     url: pic.images.thumbnail.url,

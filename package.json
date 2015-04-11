@@ -1,0 +1,16 @@
+{
+  "name": "rx-starter",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "rx": "^2.5.1",
+    "superagent": "~1.1.0"
+  },
+  "engines": {
+    "node": "~0.12.1"
+  },
+  "scripts": {
+    "start": "node starter.js"
+  }
+}

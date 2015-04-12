@@ -10,7 +10,7 @@ if (!clientId) {
 var participant = 'anonymous';
 var interval = 5; // seconds
 var postEndpoint = 'http://rxdisplay.neueda.lv/in';
-var instagramTag = encodeURIComponent('ничоси');
+var instagramTag = 'ничоси';
 
 
 // Step 0: Helper to create Observable instances from HTTP requests
@@ -31,6 +31,7 @@ Rx.Observable.fromRequest = function(req) {
 // Step 1: Fetch from Instagram by tag
 var apiRoot = 'https://api.instagram.com/v1/';
 var fromInstagramByTag = function(tag) {
+  var encodedTag = encodeURIComponent(instagramTag);
   var url = ???;
   return Rx.Observable.???(request.get(url));
 };

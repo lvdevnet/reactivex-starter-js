@@ -10,7 +10,7 @@ if (!clientId) {
 var participant = 'anonymous';
 var interval = 5; // seconds
 var postEndpoint = 'http://rxdisplay.neueda.lv/in';
-var instagramTag = 'ничоси';
+var instagramTag = encodeURIComponent('ничоси');
 
 
 // Step 0: Helper to create Observable instances from HTTP requests
@@ -31,28 +31,28 @@ Rx.Observable.fromRequest = function(req) {
 // Step 1: Fetch from Instagram by tag
 var apiRoot = 'https://api.instagram.com/v1/';
 var fromInstagramByTag = function(tag) {
-  var url = apiRoot + 'tags/' + encodeURIComponent(tag) + '/media/recent?client_id=' + clientId;
-  return Rx.Observable.fromRequest(request.get(url));
+  var url = ???;
+  return Rx.Observable.???(request.get(url));
 };
 
 
 // Step 2: Fetch with an interval and flatten
-var rawPics = Rx.Observable.interval(interval * 1000).flatMap(function() {
-  return fromInstagramByTag(instagramTag).flatMap(function(res) {
+var ticker = Rx.Observable.???;
+var rawPics = ticker.flatMap(function() {
+  return fromInstagramByTag(instagramTag).???(function(res) {
     return res.body.data;
   });
 });
 
 
-// Step 3: Restructure data and send to UI
-var pics = rawPics.distinct(function (pic) {
-  return pic.images.thumbnail.url;
-}).map(function(pic) {
+// Step 3: Filter and restructure data, then send to UI
+var uniquePics = rawPics.???(function (pic) {
+  return ???;
+});
+var pics = uniquePics.???(function(pic) {
   return {
     tag: instagramTag,
-    url: pic.images.thumbnail.url,
-    location: pic.location,
-    participant: participant
+    ???
   };
 });
 pics.subscribe(function(pic) {
